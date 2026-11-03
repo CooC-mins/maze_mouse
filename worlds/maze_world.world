@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="maze_world">
+
+    <!-- 地面与太阳光（Gazebo 自带模型） -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- 迷宫围墙：一个静态模型，所有墙体是它的 link（static 不受力、不参与动力学，性能好） -->
+    <model name="maze_walls">
+      <static>true</static>
+
+      <!-- 外墙-南-西段（入口左侧） -->
+      <link name="wall_south_w">
+        <pose>0.5 0 0.2 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.0 0.15 0.4</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1.0 0.15 0.4</size></box></geometry>
+          <material><ambient>0.4 0.4 0.8 1</ambient><diffuse>0.5 0.5 0.9 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- 外墙-南-东段（入口右侧） -->
+      <link name="wall_south_e">
+        <pose>3.9 0 0.2 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4.2 0.15 0.4</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>4.2 0.15 0.4</size></box></geometry>
+          <material><ambient>0.4 0.4 0.8 1</ambient><diffuse>0.5 0.5 0.9 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- 外墙-北-西段（出口左侧） -->
+      <link name="wall_north_w">
+        <pose>2.1 6 0.2 0 0 0</pose>
+        <collision name="c"><geometry><box><size>4.2 0.15 0.4</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>4.2 0.15 0.4</size></box></geometry>
+          <material><ambient>0.4 0.4 0.8 1</ambient><diffuse>0.5 0.5 0.9 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- 外墙-北-东段（出口右侧） -->
+      <link name="wall_north_e">
+        <pose>5.5 6 0.2 0 0 0</pose>
+        <collision name="c"><geometry><box><size>1.0 0.15 0.4</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>1.0 0.15 0.4</size></box></geometry>
+          <material><ambient>0.4 0.4 0.8 1</ambient><diffuse>0.5 0.5 0.9 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- 外墙-西 -->
+      <link name="wall_west">
+        <pose>0 3 0.2 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.15 6.0 0.4</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.15 6.0 0.4</size></box></geometry>
+          <material><ambient>0.4 0.4 0.8 1</ambient><diffuse>0.5 0.5 0.9 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- 外墙-东 -->
+      <link name="wall_east">
+        <pose>6 3 0.2 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.15 6.0 0.4</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.15 6.0 0.4</size></box></geometry>
+          <material><ambient>0.4 0.4 0.8 1</ambient><diffuse>0.5 0.5 0.9 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- 内墙 W1：竖墙 x=3，与南墙相连 -->
+      <link name="wall_inner_v">
+        <pose>3.0 2.0 0.2 0 0 0</pose>
+        <collision name="c"><geometry><box><size>0.15 4.0 0.4</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>0.15 4.0 0.4</size></box></geometry>
+          <material><ambient>0.8 0.5 0.2 1</ambient><diffuse>0.9 0.6 0.3 1</diffuse></material>
+        </visual>
+      </link>
+
+      <!-- 内墙 W2：横墙 y=4，与 W1 相连 -->
+      <link name="wall_inner_h">
+        <pose>4.1 4.0 0.2 0 0 0</pose>
+        <collision name="c"><geometry><box><size>2.2 0.15 0.4</size></box></geometry></collision>
+        <visual name="v"><geometry><box><size>2.2 0.15 0.4</size></box></geometry>
+          <material><ambient>0.8 0.5 0.2 1</ambient><diffuse>0.9 0.6 0.3 1</diffuse></material>
+        </visual>
+      </link>
+
+    </model>
+  </world>
+</sdf>
+
